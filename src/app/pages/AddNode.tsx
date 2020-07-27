@@ -340,7 +340,7 @@ export const AddNode: React.FC = () => {
                         </div>
                         <div className="bg-darkprimary-200">
                             <pre className="scrollbar-none m-0 px-2 py-4">
-                                <code className="whitespace-pre text-sm text-alethio-green">{runCode}</code>
+                                <code className="whitespace-pre text-sm text-brand-green">{runCode}</code>
                             </pre>
                         </div>
                     </div>

@@ -27,11 +27,11 @@ export const Table: React.FC = observer(() => {
                 <span className="text-white">{client.clientVersion}</span>
                 {
                     client.clientVersionStatus === "outdated" ?
-                        <span className="text-alethio-red">There's a new version available, please upgrade.</span>
+                        <span className="text-brand-red">There's a new version available, please upgrade.</span>
                         :
                         client.clientVersionStatus === "ok"
                             ?
-                            <span className="text-alethio-green">Your eth2stats-client is up-to-date. High five!</span>
+                            <span className="text-brand-green">Your eth2stats-client is up-to-date. High five!</span>
                             :
                             <span className="text-grey-500">The client version is unknown.</span>
                 }
