@@ -120,7 +120,7 @@ export const AddNode: React.FC = () => {
 
     return (
         <div
-            className="w-full h-full flex flex-wrap bg-darkblue-100 p-0 text-white max-w-screen-xl mx-auto"
+            className="w-full h-full flex flex-wrap bg-darkprimary-100 p-0 text-white max-w-screen-xl mx-auto"
             style={{marginTop: store.getConfig().length > 1 && 48 || 0}}
         >
             <div className="w-full flex flex-col sm:justify-center h-24">
@@ -338,7 +338,7 @@ export const AddNode: React.FC = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="bg-darkblue-200">
+                        <div className="bg-darkprimary-200">
                             <pre className="scrollbar-none m-0 px-2 py-4">
                                 <code className="whitespace-pre text-sm text-alethio-green">{runCode}</code>
                             </pre>

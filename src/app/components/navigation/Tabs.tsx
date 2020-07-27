@@ -31,25 +31,25 @@ export const Tabs: React.FC = observer(() => {
     });
 
     return (
-        <nav className="fixed top-0 w-full bg-darkblue-200 h-12 z-30 flex">
+        <nav className="fixed top-0 w-full bg-darkprimary-200 h-12 z-30 flex">
             <Scrollbars autoHide autoHeight autoHeightMin={0} autoHeightMax={48}
                         ref={scrollRef}>
                 <div className="flex h-12 w-auto">
                     {store.networks.map((net) => (
                         <Link key={net.path} to={`${net.path}`}
-                              className={`flex items-center ${pathname.startsWith(net.path) && "bg-darkblue-100"}`}
+                              className={`flex items-center ${pathname.startsWith(net.path) && "bg-darkprimary-100"}`}
                               id={`tab-link-${net.path}`}
                         >
-                            <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap ${pathname.startsWith(net.path) && "text-blue-500" || "text-grey-600"}`}>
+                            <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap ${pathname.startsWith(net.path) && "text-primary-500" || "text-grey-600"}`}>
                                 {net.name}
                             </p>
                         </Link>
                     ))}
                     <Link to="/add-node"
-                          className={`flex items-center ${pathname.startsWith("/add-node") && "bg-darkblue-100"}`}
+                          className={`flex items-center ${pathname.startsWith("/add-node") && "bg-darkprimary-100"}`}
                           id={`tab-link-/add-node`}
                     >
-                        <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap ${pathname.startsWith("/add-node") && "text-blue-500" || "text-grey-600"}`}>
+                        <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap ${pathname.startsWith("/add-node") && "text-primary-500" || "text-grey-600"}`}>
                             <FontAwesomeIcon icon="plus-circle" className="mr-2"/>
                             <span className="font-semibold text-sm">Add your node</span>
                         </p>

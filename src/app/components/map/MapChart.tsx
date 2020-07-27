@@ -46,7 +46,7 @@ export const MapChart: React.FC<IMapChartProps> = observer((props) => {
   return (
       <Scrollbars autoHide autoHeight autoHeightMin={0}
                   autoHeightMax={scrollHeight}>
-        <ComposableMap width={width} height={height} projection={projection} className="bg-darkblue-200">
+        <ComposableMap width={width} height={height} projection={projection} className="bg-darkprimary-200">
           <ZoomableGroup>
             <Geographies geography={geoUrl}>
               {({geographies}) =>

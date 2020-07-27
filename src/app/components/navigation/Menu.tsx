@@ -19,7 +19,7 @@ export const Menu: React.FC<IMenuProps> = (props) => {
                 <Link to={`${url}`}>
                     <div className={`mr-4 flex items-center justify-center border p-2 w-10
                                     ${pathname === `${url}`
-                        ? "border-blue-500 bg-blue-500 text-white"
+                        ? "border-primary-500 bg-primary-500 text-white"
                         : "text-grey-600 border-grey-600 hover:border-white hover:text-white transition"}`}>
                         <FontAwesomeIcon icon="list"/>
                     </div>
@@ -27,7 +27,7 @@ export const Menu: React.FC<IMenuProps> = (props) => {
                 <Link to={`${url}/map`}>
                     <div className={`flex items-center justify-center border p-2 w-10
                                     ${pathname === `${url}/map`
-                        ? "border-blue-500 bg-blue-500 text-white"
+                        ? "border-primary-500 bg-primary-500 text-white"
                         : "text-grey-600 border-grey-600 hover:border-white hover:text-white transition"} `}>
                         <FontAwesomeIcon icon="map"/>
                     </div>

@@ -60,7 +60,7 @@ export const Table: React.FC = observer(() => {
                     {loading &&
                     <TableLoading/>
                     }
-                    <div className="w-full relative block overflow-anchor-none bg-darkblue-200">
+                    <div className="w-full relative block overflow-anchor-none bg-darkprimary-200">
                         {store.clientStore.sortedClients.map((client) => (
                             <TableRow client={client} key={client.id} store={store}/>
                         ))}

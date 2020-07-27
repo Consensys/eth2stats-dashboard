@@ -30,7 +30,7 @@ export const Loading = observer((props: ILoadingProps) => {
 
     return (
         <div
-            className={`fixed flex justify-center items-center top-0 left-0 w-screen h-screen bg-darkblue-200 z-40 animated faster ${!animate
+            className={`fixed flex justify-center items-center top-0 left-0 w-screen h-screen bg-darkprimary-200 z-40 animated faster ${!animate
                 ? "fadeOut"
                 : ""} ${!hidden || "hidden"}`}>
             <svg viewBox="0 0 32 32" version="1.1"
