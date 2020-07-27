@@ -11,7 +11,7 @@ export class App {
         let localDev = false;
         try {
             const resp = (await axios.get("/config.json"));
-            if (resp.headers['X-Local-Dev']) {
+            if (resp.headers["X-Local-Dev"]) {
                 localDev = true;
             }
             appConfigData = resp.data;

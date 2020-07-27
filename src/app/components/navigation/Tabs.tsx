@@ -37,17 +37,17 @@ export const Tabs: React.FC = observer(() => {
             <Scrollbars autoHide autoHeight autoHeightMin={0} autoHeightMax={48}
                         ref={scrollRef}>
                 <div className="flex h-12 w-auto">
-                      <Link key="local" to={currentNet.path} className={`flex items-center`}>
+                    {currentNet && <Link key="local" to="/" className={`flex items-center bg-darkprimary-100`}>
                           <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap text-primary-500`}>
                               {currentNet.name}
                           </p>
-                      </Link>
+                      </Link>}
                     {Object.entries(store.getOtherDashes()).map(([netName, netPath]) => (
-                        <Link key={netName} to={`${netPath}`} className={`flex items-center bg-darkprimary-100`}>
+                        <a key={netName} href={`${netPath}`} className={`flex items-center`}>
                             <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap text-grey-600`}>
                                 {netName}
                             </p>
-                        </Link>
+                        </a>
                     ))}
                     <Link to="/add-node"
                           className={`flex items-center ${pathname.startsWith("/add-node") && "bg-darkprimary-100"}`}

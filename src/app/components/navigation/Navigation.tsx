@@ -10,6 +10,8 @@ import { useStores } from "app/store/Hook";
 export const Navigation: React.FC = observer(() => {
         const {store} = useStores();
 
+        const netConf = store.getNetworkConfig();
+
         return (
             <React.Fragment>
                 <nav
@@ -21,8 +23,7 @@ export const Navigation: React.FC = observer(() => {
                         <div className="flex items-center">
                             <NodesCount store={store}/>
                             {window.innerWidth >= 640 && <SlotStats store={store}/>}
-                            <Menu networkPath={store.getNetworkConfig()!.path}
-                                  currentPath={store.path}/>
+                            <Menu />
                         </div>
                     </div>
 
@@ -34,10 +35,12 @@ export const Navigation: React.FC = observer(() => {
                     }
                 </nav>
 
-                <BottomNav joinURL={store.getNetworkConfig()!.joinURL}
-                           issuesURL={store.getNetworkConfig()!.issuesURL}
-                           forkURL={store.getNetworkConfig()!.forkURL}
-                           forkName={store.getNetworkConfig()!.forkName}/>
+              {netConf &&
+                <BottomNav joinURL={netConf!.joinURL}
+                           issuesURL={netConf!.issuesURL}
+                           forkURL={netConf!.forkURL}
+                           forkName={netConf!.forkName}/>
+              }
             </React.Fragment>
         );
     }

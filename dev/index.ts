@@ -15,7 +15,7 @@ app.get("/config.json", (req, res) => {
     let configJsonc = fs.readFileSync("../config.jsonc", "utf8");
     let configJson = stripComments(configJsonc);
     res.setHeader("Content-Type", "application/json");
-    res.setHeader("X-Local-Dev", "true")
+    res.setHeader("X-Local-Dev", "false")
     res.send(configJson);
 });
 

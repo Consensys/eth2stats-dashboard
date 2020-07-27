@@ -49,7 +49,7 @@ const NodeList: INode[] = [
 export const AddNode: React.FC = () => {
     const {store} = useStores();
 
-    const [network, setNetwork] = React.useState(store.networks[0]);
+    const network = store.getNetworkConfig();
     const [node, setNode] = React.useState(NodeList[0]);
     const [runClient, setRunClient] = React.useState("docker");
     const [nodeName, setNodeName] = React.useState("");
@@ -93,7 +93,7 @@ export const AddNode: React.FC = () => {
                 `alethio/eth2stats-client:latest run \\` + "\n" +
                 `--eth2stats.node-name="${nodeName}" \\` + "\n" +
                 `--data.folder="/data" \\` + "\n" +
-                `--eth2stats.addr="${network.SERVER_ADDR}" --eth2stats.tls=true \\` + "\n" +
+                `--eth2stats.addr="${network.serverAddr}" --eth2stats.tls=true \\` + "\n" +
                 `--beacon.type="${node.type}" \\` + "\n" +
                 `--beacon.addr="${node.beaconAddr}"`;
             if (node.metricsEnabled && node.metricsAddr !== "") {
@@ -108,7 +108,7 @@ export const AddNode: React.FC = () => {
                 `./eth2stats-client run \\` + "\n" +
                 `--eth2stats.node-name="${nodeName}" \\` + "\n" +
                 `--data.folder ${dataFolder} \\` + "\n" +
-                `--eth2stats.addr="${network.SERVER_ADDR}" --eth2stats.tls=true \\` + "\n" +
+                `--eth2stats.addr="${network.serverAddr}" --eth2stats.tls=true \\` + "\n" +
                 `--beacon.type="${node.type}" \\` + "\n" +
                 `--beacon.addr="${node.beaconAddr}"`;
             if (node.metricsEnabled && node.metricsAddr !== "") {
@@ -121,7 +121,7 @@ export const AddNode: React.FC = () => {
     return (
         <div
             className="w-full h-full flex flex-wrap bg-darkprimary-100 p-0 text-white max-w-screen-xl mx-auto"
-            style={{marginTop: store.getConfig().length > 1 && 48 || 0}}
+            style={{marginTop: store.hasOtherDashses() && 48 || 0}}
         >
             <div className="w-full flex flex-col sm:justify-center h-24">
                 <div className="flex justify-between w-full py-4 sm:py-0">
@@ -157,42 +157,6 @@ export const AddNode: React.FC = () => {
                                     <a href="https://eth2stats.io/">
                                         Eth2Stats
                                     </a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-wrap mb-6">
-                            <div className="w-full ">
-                                <label
-                                    className="block tracking-wide font-bold mb-2"
-                                    htmlFor="eth2-network">
-                                    Ethereum 2.0 Network
-                                </label>
-                                <div className="inline-block relative w-full">
-                                    <select id="eth2-network" name="network" value={network.path}
-                                            className="inputs pr-8"
-                                            onChange={
-                                                e => setNetwork(store.networks.find(n => n.path === e.target.value)!)
-                                            }
-                                    >
-                                        {store.networks.map(net =>
-                                            <option className="" key={net.path} value={`${net.path}`}>
-                                                {net.name}
-                                            </option>
-                                        )}
-                                    </select>
-                                    <div
-                                        className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 -mt-3 text-gray-700">
-                                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                             viewBox="0 0 20 20">
-                                            <path
-                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <p className="text-gray-600 text-md italic">
-                                    Which network is your node connected to
                                 </p>
                             </div>
                         </div>

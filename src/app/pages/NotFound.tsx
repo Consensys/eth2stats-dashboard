@@ -15,16 +15,21 @@ export const NotFound: React.FC = () => {
                 <p>Page does not exist !</p>
             </div>
             <div className="flex flex-col items-center text-xl font-bold">
+                <Link to={`/`}>
+                  <div className={`m-4 p-4 flex items-center justify-center border text-grey-600 border-grey-600 hover:border-white hover:text-white transition`}>
+                    Go back to the {store.getNetworkConfig()?.name || ""} dashboard
+                  </div>
+                </Link>
                 <div className="mt-20">
-                    <p>Please select one of the active networks</p>
+                    <p>Or visit one of the other networks dashboards</p>
                 </div>
                 <div className="flex flex-wrap mt-4 justify-center">
-                    {store.networks.map(net =>
-                        <Link to={`${net.path}`} key={net.path}>
+                    {Object.entries(store.getOtherDashes()).map(([netName, netPath]) =>
+                        <a href={`${netPath}`} key={netPath}>
                             <div className={`m-4 p-4 flex items-center justify-center border text-grey-600 border-grey-600 hover:border-white hover:text-white transition`}>
-                                {net.name}
+                                {netName}
                             </div>
-                        </Link>
+                        </a>
                     )}
                 </div>
             </div>

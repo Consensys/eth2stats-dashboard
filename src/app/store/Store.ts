@@ -122,11 +122,11 @@ export class Store {
     }
 
     hasOtherDashses(): boolean {
-        return Object.keys(this.config.others).length > 1
+        return Object.keys(this.config.others || {}).length > 1;
     }
 
     getOtherDashes(): OtherDashes {
-        return this.config.others
+        return this.config.others || {};
     }
 
     getConnConfig(): IConnConfig {
@@ -135,6 +135,10 @@ export class Store {
 
     getNetworkConfig(): INetworkConfig {
         return this.config.network;
+    }
+
+    usesHashRouter(): boolean {
+        return this.config.hashRouter;
     }
 
     openLoading() {

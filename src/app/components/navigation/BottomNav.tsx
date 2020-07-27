@@ -34,11 +34,11 @@ export const BottomNav: React.FC<IBottomNavProps> = (props) => (
                     <FontAwesomeIcon icon="exclamation-circle" className="mr-2" />
                     <span className="font-semibold text-sm">Report issues</span>
                 </a>
-                <div className="flex items-center">
-                    <span className="mr-2">Fork on GitHub </span>
+                <div className="mr-8 flex items-center">
                     <a href={props.forkURL}
                         className="text-grey-600 hover:text-primary-500 transition"
-                        target="_blank"><code>{props.forkName}</code></a>
+                        target="_blank">
+                        <span className="mr-2">Fork on GitHub </span></a>
                 </div>
                 { props.forkName === "Aleth.io"
                     ? <div className="flex items-center">

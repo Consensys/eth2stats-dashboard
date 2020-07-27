@@ -1,25 +1,25 @@
 export interface IConnConfig {
     "HTTP_API": string;
     "WS_API": string;
-    "SERVER_ADDR": string;
 }
 
 export interface INetworkConfig {
     "name": string;
-    "path": string;
     "joinURL": string;
     "issuesURL": string;
     "forkURL": string;
     "forkName": string;
+    "serverAddr": string;
 }
 
 export type OtherDashes = Record<string, string>;
 
 export interface IAppConfigData {
-    local: IConnConfig,
-    remote: IConnConfig,
-    network: INetworkConfig,
-    others: OtherDashes,
+    local: IConnConfig;
+    remote: IConnConfig;
+    network: INetworkConfig;
+    others: OtherDashes;
+    hashRouter: boolean;
 }
 
 export class AppConfig {
