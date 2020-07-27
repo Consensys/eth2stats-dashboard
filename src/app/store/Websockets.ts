@@ -16,6 +16,9 @@ export class Websockets {
     }
 
     start() {
+        if (this.socket) {
+            return;
+        }
         this.socket = new WebSocket(this.main.getConnConfig()!.WS_API);
 
         this.socket.onerror = this.onerror;

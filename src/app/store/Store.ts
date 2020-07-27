@@ -115,6 +115,8 @@ export class Store {
     setConfig(config: AppConfig) {
         this.config = config.getConfig();
         this.local = config.isLocal();
+        // make sure the websocket service is started, now that we have data.
+        this.websocketsService.start();
     }
 
     getConfig() {
