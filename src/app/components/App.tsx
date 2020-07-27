@@ -33,19 +33,15 @@ export const App = observer((props: IAppProps) => {
                     <Route path="/add-node" exact >
                         <AddNode/>
                     </Route>
+
+                    <Route path="/map" exact>
+                        <Navigation/>
+                        <Map store={store}/>
+                    </Route>
+
                     <Route path="/" exact>
                         <Navigation/>
-                        <Switch>
-                            <Route path={`/`} exact>
-                                <Home store={store}/>
-                            </Route>
-                            <Route path={`/map`} exact>
-                                <Map store={store}/>
-                            </Route>
-                            <Route>
-                                <NotFound/>
-                            </Route>
-                        </Switch>
+                        <Home store={store}/>
                     </Route>
                     <Route>
                         <NotFound/>
