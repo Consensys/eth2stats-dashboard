@@ -3,6 +3,9 @@ export interface INetworkConfig {
     "name": string;
     "path": string;
     "joinURL": string;
+    "issuesURL": string;
+    "forkURL": string;
+    "forkName": string;
     "HTTP_API": string;
     "WS_API": string;
     "SERVER_ADDR": string;

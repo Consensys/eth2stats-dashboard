@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 interface IBottomNavProps {
     joinURL: string;
+    issuesURL: string;
+    forkURL: string;
+    forkName: string;
 }
 
 export const BottomNav: React.FC<IBottomNavProps> = (props) => (
@@ -25,17 +28,17 @@ export const BottomNav: React.FC<IBottomNavProps> = (props) => (
             </div>
             <div
                 className="px-4 flex items-center font-semibold text-sm text-grey-600">
-                <a href="https://github.com/Alethio/eth2stats-client/issues"
+                <a href={props.issuesURL}
                     className="mr-8 flex items-center text-grey-600 hover:text-primary-500 transition"
                     target="_blank">
                     <FontAwesomeIcon icon="exclamation-circle" className="mr-2" />
                     <span className="font-semibold text-sm">Report issues</span>
                 </a>
                 <div className="flex items-center">
-                    <span className="mr-2">powered by </span>
-                    <a href="https://aleth.io"
+                    <span className="mr-2">Fork on GitHub </span>
+                    <a href={props.forkURL}
                         className="text-grey-600 hover:text-primary-500 transition"
-                        target="_blank">Aleth.io</a>
+                        target="_blank"><code>{props.forkName}</code></a>
                 </div>
             </div>
         </nav>

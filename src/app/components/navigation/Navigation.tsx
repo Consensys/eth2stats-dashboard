@@ -38,7 +38,10 @@ export const Navigation: React.FC = observer(() => {
                     }
                 </nav>
 
-                <BottomNav joinURL={store.getNetworkConfig()!.joinURL}/>
+                <BottomNav joinURL={store.getNetworkConfig()!.joinURL}
+                           issuesURL={store.getNetworkConfig()!.issuesURL}
+                           forkURL={store.getNetworkConfig()!.forkURL}
+                           forkName={store.getNetworkConfig()!.forkName}/>
             </React.Fragment>
         );
     }
