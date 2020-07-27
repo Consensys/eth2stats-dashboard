@@ -61,6 +61,7 @@ function getConfig(isProduction) {
         }),
         new FaviconsWebpackPlugin({
             logo: path.join(assetsRoot, "ethstats.svg"),
+            cache: true,
             title: translation["title"]
         })
     ];

@@ -1,0 +1,26 @@
+{
+    "local": {
+        "HTTP_API": "http://localhost:8080/api",
+        "WS_API": "ws://localhost:8080/ws",
+        "SERVER_ADDR": "localhost:80",
+    },
+    "remote": {
+        "HTTP_API": "http://localhost:8080/api",
+        "WS_API": "ws://localhost:8080/ws",
+        "SERVER_ADDR": "localhost:80",
+    },
+    "network": {
+        "name": "Local",
+        "path": "/",
+        "joinURL": "http://localhost:8080/participate",
+        "issuesURL": "https://github.com/Alethio/eth2stats-dashboard/issues",
+        "forkURL": "https://github.com/ConsenSys/eth2stats-dashboard",
+        "forkName": "Aleth.io",
+    },
+    "others": {
+        "Onyx Testnet": "https://eth2stats.io/onyx-testnet",
+        "Altona Testnet": "https://eth2stats.io/altona-testnet",
+        "Witti Testnet (Deprecated)": "https://eth2stats.io/witti-testnet",
+        "Topaz Testnet (Deprecated)": "https://eth2stats.io/topaz-testnet",
+    }
+}

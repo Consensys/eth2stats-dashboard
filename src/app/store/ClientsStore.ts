@@ -107,7 +107,7 @@ export class ClientsStore {
     @action.bound
     fetch() {
         return new Promise((resolve, reject) => {
-            axios.get(this.main.getNetworkConfig()!.HTTP_API + "/clients").then((response) => {
+            axios.get(this.main.getConnConfig()!.HTTP_API + "/clients").then((response) => {
                 runInAction(() => {
                     this.updateList(response.data.data);
                     this.clientsLoading = false;

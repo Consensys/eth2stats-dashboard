@@ -8,8 +8,13 @@ import { App as AppComponent } from "app/components/App";
 export class App {
     async init(target: HTMLElement) {
         let appConfigData: any;
+        let localDev = false;
         try {
-            appConfigData = (await axios.get("/config/config.json")).data;
+            const resp = (await axios.get("/config.json"));
+            if (resp.headers['X-Local-Dev']) {
+                localDev = true;
+            }
+            appConfigData = resp.data;
         } catch (e) {
             // No logging support yet
             // tslint:disable-next-line:no-console
@@ -17,7 +22,7 @@ export class App {
             return;
         }
         let appConfig = new AppConfig();
-        appConfig.fromJson(appConfigData);
+        appConfig.fromJson(appConfigData, localDev);
 
         onReactionError((e) => {
             // TODO proper logging

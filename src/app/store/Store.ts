@@ -4,7 +4,7 @@ import { Stats } from "./Stats";
 import { Websockets } from "./Websockets";
 import { ClientsStore } from "./ClientsStore";
 import { Notifications } from "app/store/Notifications";
-import { AppConfig, INetworkConfig } from "../AppConfig";
+import { AppConfig, IAppConfigData, IConnConfig, INetworkConfig, OtherDashes } from "../AppConfig";
 
 export interface IColumn {
     name: string;
@@ -93,7 +93,9 @@ export class Store {
         }
     ];
 
-    networks: INetworkConfig[];
+    config: IAppConfigData;
+
+    local: boolean;
 
     websocketsService: Websockets;
 
@@ -111,40 +113,24 @@ export class Store {
     }
 
     setConfig(config: AppConfig) {
-        this.networks = config.getNetworksConfig();
+        this.config = config.getConfig();
+        this.local = config.isLocal();
     }
 
     getConfig() {
-        return this.networks;
+        return this.config;
     }
 
-    getNetworkConfig() {
-        return this.networks.find((net) => net.path === this.network);
+    getOtherDashes(): OtherDashes {
+        return this.config.others
     }
 
-    changeNetwork(net: string) {
-        if (this.network === net) {
-            return;
-        }
+    getConnConfig(): IConnConfig {
+        return this.local ? this.config.local : this.config.remote;
+    }
 
-        this.openLoading();
-
-        this.notify.clearAll();
-        this.clientStore.reset();
-        this.stats.stop();
-        this.websocketsService.stop();
-        this.network = net;
-        this.networkName = "";
-        this.networkGenesisTime = "";
-
-        this.fetchNetworkDetails().then(() => {
-            this.stats.start(this.networkGenesisTime);
-            this.websocketsService.start();
-        }).catch((err) => {
-            this.notify.error("Got error while fetching network details.");
-            this.clientStore.loading(false);
-            this.closeLoading();
-        });
+    getNetworkConfig(): INetworkConfig {
+        return this.config.network;
     }
 
     openLoading() {
@@ -157,7 +143,7 @@ export class Store {
 
     fetchNetworkDetails() {
         return new Promise((resolve, reject) => {
-            axios.get(this.getNetworkConfig()!.HTTP_API + "/network").then((response) => {
+            axios.get(this.getConnConfig()!.HTTP_API + "/network").then((response) => {
                 this.networkName = response.data.data.name;
                 this.networkGenesisTime = response.data.data.genesisTime;
                 resolve();

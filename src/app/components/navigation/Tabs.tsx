@@ -30,18 +30,22 @@ export const Tabs: React.FC = observer(() => {
         }
     });
 
+    const currentNet = store.getNetworkConfig();
+
     return (
         <nav className="fixed top-0 w-full bg-darkprimary-200 h-12 z-30 flex">
             <Scrollbars autoHide autoHeight autoHeightMin={0} autoHeightMax={48}
                         ref={scrollRef}>
                 <div className="flex h-12 w-auto">
-                    {store.networks.map((net) => (
-                        <Link key={net.path} to={`${net.path}`}
-                              className={`flex items-center ${pathname.startsWith(net.path) && "bg-darkprimary-100"}`}
-                              id={`tab-link-${net.path}`}
-                        >
-                            <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap ${pathname.startsWith(net.path) && "text-primary-500" || "text-grey-600"}`}>
-                                {net.name}
+                      <Link key="local" to={currentNet.path} className={`flex items-center`}>
+                          <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap text-primary-500`}>
+                              {currentNet.name}
+                          </p>
+                      </Link>
+                    {Object.entries(store.getOtherDashes()).map(([netName, netPath]) => (
+                        <Link key={netName} to={`${netPath}`} className={`flex items-center bg-darkprimary-100`}>
+                            <p className={`text-sm px-6 py-2 rounded-lg whitespace-no-wrap text-grey-600`}>
+                                {netName}
                             </p>
                         </Link>
                     ))}
