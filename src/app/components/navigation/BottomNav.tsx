@@ -40,6 +40,21 @@ export const BottomNav: React.FC<IBottomNavProps> = (props) => (
                         className="text-grey-600 hover:text-primary-500 transition"
                         target="_blank"><code>{props.forkName}</code></a>
                 </div>
+                { props.forkName === "Aleth.io"
+                    ? <div className="flex items-center">
+                        <span className="mr-2">Powered by </span>
+                        <a href="https://aleth.io"
+                           className="text-grey-600 hover:text-primary-500 transition"
+                           target="_blank">Aleth.io</a>
+                    </div>
+                    : <div className="flex items-center">
+                        <span className="mr-2">Fork of</span>
+                        <a href="https://github.com/ConsenSys/eth2stats-dashboard"
+                           className="text-grey-600 hover:text-primary-500 transition"
+                           target="_blank">Aleth.io Eth2stats</a>
+                        <span className="mr-2">(MIT license)</span>
+                    </div>
+                }
             </div>
         </nav>
     </div>
