@@ -121,6 +121,10 @@ export class Store {
         return this.config;
     }
 
+    hasOtherDashses(): boolean {
+        return Object.keys(this.config.others).length > 1
+    }
+
     getOtherDashes(): OtherDashes {
         return this.config.others
     }

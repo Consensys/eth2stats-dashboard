@@ -5,7 +5,6 @@ import { Store } from "app/store/Store";
 
 interface IMapProps {
     store: Store;
-    network: number;
 }
 
 @observer
@@ -15,7 +14,7 @@ export class Map extends React.Component<IMapProps> {
 
         return (
             <React.Fragment>
-                <div className={`${store.getConfig().length > 1 && "mt-44 sm:mt-36" ||
+                <div className={`${store.hasOtherDashses() && "mt-44 sm:mt-36" ||
                     "mt-32 sm:mt-24"} mx-auto`}>
                     <MapChart {...this.props} />
                 </div>

@@ -30,7 +30,7 @@ interface IMapChartProps {
 export const MapChart: React.FC<IMapChartProps> = observer((props) => {
   const {store} = props; // useStores();
 
-  const tabsVisible = store.getConfig().length > 1;
+  const tabsVisible = store.hasOtherDashses();
   const scrollHeight = getScrollHeight(tabsVisible);
 
   if (store.clientStore.clientsLoading) {

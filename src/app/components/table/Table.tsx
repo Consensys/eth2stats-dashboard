@@ -42,7 +42,7 @@ export const Table: React.FC = observer(() => {
 
     const loading = store.clientStore.clientsLoading;
 
-    const scrollHeight = getScrollHeight(store.getConfig().length > 1) - 50; // 50 = table head height
+    const scrollHeight = getScrollHeight(store.hasOtherDashses()) - 50; // 50 = table head height
 
     return (
         <React.Fragment>

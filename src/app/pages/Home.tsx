@@ -4,7 +4,6 @@ import { Store } from "app/store/Store";
 
 interface IHomeProps {
     store: Store;
-    network: number;
 }
 
 export class Home extends React.Component<IHomeProps> {
@@ -12,7 +11,7 @@ export class Home extends React.Component<IHomeProps> {
         const { store } = this.props;
 
         return (
-            <div className={`${store.getConfig().length > 1 && "mt-44 sm:mt-36" ||
+            <div className={`${store.hasOtherDashses() && "mt-44 sm:mt-36" ||
                 "mt-32 sm:mt-24"} mx-auto`}>
                 <Table {...this.props} />
             </div>
