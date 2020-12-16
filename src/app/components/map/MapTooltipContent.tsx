@@ -39,7 +39,7 @@ export const MapTooltipContent = (props: IMapTooltipContentProps) => {
                             <div className="mr-2 w-4 text-center">
                                 <FontAwesomeIcon icon="network-wired" className="mr-2" />
                             </div>
-                            <p className={`text-alethio-green`}>{client.name}</p>
+                            <p className={`text-brand-green`}>{client.name}</p>
                         </div>
                         <div className="flex flex-initial items-center mb-1">
                             <div className="mr-2 w-4 text-center">

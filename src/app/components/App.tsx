@@ -9,7 +9,7 @@ import { NotFound } from "../pages/NotFound";
 import { Notifications } from "./Notifications";
 import { Navigation } from "./navigation/Navigation";
 import { AppConfig } from "app/AppConfig";
-import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, BrowserRouter, Route, Switch } from "react-router-dom";
 import { Tabs } from "app/components/navigation/Tabs";
 
 interface IAppProps {
@@ -20,7 +20,7 @@ export const App = observer((props: IAppProps) => {
     const {store} = useStores();
     store.setConfig(props.appConfig);
 
-    let networks = store.getConfig();
+    const Router: React.ComponentType = store.usesHashRouter() ? HashRouter : BrowserRouter;
 
     return (
         <div className="text-grey-600">
@@ -30,28 +30,18 @@ export const App = observer((props: IAppProps) => {
                 <Tabs/>
 
                 <Switch>
-                    {networks.map((net, index) =>
-                        <Route path={`${net.path}`} key={net.path}>
-                            <Navigation/>
-                            <Switch>
-                                <Route path={`${net.path}`} exact>
-                                    <Home store={store} network={index}/>
-                                </Route>
-                                <Route path={`${net.path}/map`} exact>
-                                    <Map store={store} network={index}/>
-                                </Route>
-
-                                <Route>
-                                    <NotFound/>
-                                </Route>
-                            </Switch>
-                        </Route>
-                    )}
                     <Route path="/add-node" exact >
                         <AddNode/>
                     </Route>
+
+                    <Route path="/map" exact>
+                        <Navigation/>
+                        <Map store={store}/>
+                    </Route>
+
                     <Route path="/" exact>
-                        <Redirect to={`${networks[0].path}`}/>
+                        <Navigation/>
+                        <Home store={store}/>
                     </Route>
                     <Route>
                         <NotFound/>

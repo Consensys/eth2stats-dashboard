@@ -1,25 +1,41 @@
+export interface IConnConfig {
+    "HTTP_API": string;
+    "WS_API": string;
+}
 
 export interface INetworkConfig {
     "name": string;
-    "path": string;
     "joinURL": string;
-    "HTTP_API": string;
-    "WS_API": string;
-    "SERVER_ADDR": string;
+    "issuesURL": string;
+    "forkURL": string;
+    "forkName": string;
+    "serverAddr": string;
 }
 
-interface IAppConfigData {
-    networks: INetworkConfig[];
+export type OtherDashes = Record<string, string>;
+
+export interface IAppConfigData {
+    local: IConnConfig;
+    remote: IConnConfig;
+    network: INetworkConfig;
+    others: OtherDashes;
+    hashRouter: boolean;
 }
 
 export class AppConfig {
     private data: IAppConfigData;
+    private local: boolean;
 
-    fromJson(data: IAppConfigData) {
+    fromJson(data: IAppConfigData, local: boolean) {
         this.data = data;
+        this.local = local;
     }
 
-    getNetworksConfig() {
-        return this.data.networks;
+    getConfig(): IAppConfigData {
+        return this.data;
+    }
+
+    isLocal(): boolean {
+        return this.local;
     }
 }

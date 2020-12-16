@@ -1,0 +1,27 @@
+{
+    "local": {
+        "HTTP_API": "http://localhost:8080/api",
+        "WS_API": "ws://localhost:8080/ws"
+    },
+    "remote": {
+        // change this to some actual eth2stats-server details
+        "HTTP_API": "https://api.onyx.eth2stats.io/api",
+        "WS_API": "wss://api.onyx.eth2stats.io/ws"
+    },
+    "network": {
+        "name": "Onyx Testnet",
+        "joinURL": "https://prylabs.net/participate",
+        "issuesURL": "https://github.com/Alethio/eth2stats-dashboard/issues",
+        "forkURL": "https://github.com/ConsenSys/eth2stats-dashboard",
+        "serverAddr": "grpc.onyx.eth2stats.io:443",
+        "forkName": "Aleth.io"
+    },
+    "others": {
+        "Onyx Testnet": "https://eth2stats.io/onyx-testnet",
+        "Altona Testnet": "https://eth2stats.io/altona-testnet",
+        "Witti Testnet (Deprecated)": "https://eth2stats.io/witti-testnet",
+        "Topaz Testnet (Deprecated)": "https://eth2stats.io/topaz-testnet"
+    },
+    // Set to false when hosting with a dynamic webhost instead of something static like IPFS or github-pages.
+    "hashRouter": true
+}

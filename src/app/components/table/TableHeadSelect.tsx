@@ -19,9 +19,9 @@ export const TableHeadSelect: React.FC = observer(() => {
     const value = `${store.clientStore.sortBy} ${store.clientStore.sortOrder === 1 ? "descending" : "ascending"}`;
     return (
         <div
-            className="inline-block relative w-full bg-darkblue-100 text-grey-600 font-semibold sm:hidden">
+            className="inline-block relative w-full bg-darkprimary-100 text-grey-600 font-semibold sm:hidden">
             <select
-                className="block appearance-none w-full bg-darkblue-100 border-0 px-4 py-4 pr-8 leading-tight focus:outline-none focus:shadow-outline capitalize"
+                className="block appearance-none w-full bg-darkprimary-100 border-0 px-4 py-4 pr-8 leading-tight focus:outline-none focus:shadow-outline capitalize"
                 value={value} onChange={handleChange}>
                 {store.columns.filter(column => column.sortable).map((column) => (
                     <React.Fragment key={column.name}>
@@ -31,7 +31,7 @@ export const TableHeadSelect: React.FC = observer(() => {
                 ))}
             </select>
             <div
-                className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 bg-darkblue-100">
+                className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 bg-darkprimary-100">
                 <svg className="fill-current h-4 w-4"
                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                 >

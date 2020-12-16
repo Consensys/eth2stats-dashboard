@@ -30,7 +30,7 @@ interface IMapChartProps {
 export const MapChart: React.FC<IMapChartProps> = observer((props) => {
   const {store} = props; // useStores();
 
-  const tabsVisible = store.getConfig().length > 1;
+  const tabsVisible = store.hasOtherDashses();
   const scrollHeight = getScrollHeight(tabsVisible);
 
   if (store.clientStore.clientsLoading) {
@@ -46,7 +46,7 @@ export const MapChart: React.FC<IMapChartProps> = observer((props) => {
   return (
       <Scrollbars autoHide autoHeight autoHeightMin={0}
                   autoHeightMax={scrollHeight}>
-        <ComposableMap width={width} height={height} projection={projection} className="bg-darkblue-200">
+        <ComposableMap width={width} height={height} projection={projection} className="bg-darkprimary-200">
           <ZoomableGroup>
             <Geographies geography={geoUrl}>
               {({geographies}) =>

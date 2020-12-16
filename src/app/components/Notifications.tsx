@@ -11,7 +11,7 @@ export const Notifications = observer((props: INotificationsProps) => {
 
     let items: React.ReactNode[] = [];
     notifStore.list.forEach((n: INotification, key: number) => {
-        let bg = "bg-blue-500";
+        let bg = "bg-primary-500";
         let text = "text-white";
 
         if (n.type === "error") {

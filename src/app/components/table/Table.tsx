@@ -27,11 +27,11 @@ export const Table: React.FC = observer(() => {
                 <span className="text-white">{client.clientVersion}</span>
                 {
                     client.clientVersionStatus === "outdated" ?
-                        <span className="text-alethio-red">There's a new version available, please upgrade.</span>
+                        <span className="text-brand-red">There's a new version available, please upgrade.</span>
                         :
                         client.clientVersionStatus === "ok"
                             ?
-                            <span className="text-alethio-green">Your eth2stats-client is up-to-date. High five!</span>
+                            <span className="text-brand-green">Your eth2stats-client is up-to-date. High five!</span>
                             :
                             <span className="text-grey-500">The client version is unknown.</span>
                 }
@@ -42,7 +42,7 @@ export const Table: React.FC = observer(() => {
 
     const loading = store.clientStore.clientsLoading;
 
-    const scrollHeight = getScrollHeight(store.getConfig().length > 1) - 50; // 50 = table head height
+    const scrollHeight = getScrollHeight(store.hasOtherDashses()) - 50; // 50 = table head height
 
     return (
         <React.Fragment>
@@ -60,7 +60,7 @@ export const Table: React.FC = observer(() => {
                     {loading &&
                     <TableLoading/>
                     }
-                    <div className="w-full relative block overflow-anchor-none bg-darkblue-200">
+                    <div className="w-full relative block overflow-anchor-none bg-darkprimary-200">
                         {store.clientStore.sortedClients.map((client) => (
                             <TableRow client={client} key={client.id} store={store}/>
                         ))}

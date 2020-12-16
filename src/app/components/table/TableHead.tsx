@@ -13,7 +13,7 @@ export const TableHead: React.FC = observer(() => {
     // }
 
     return (
-        <div className="py-4 w-full bg-darkblue-100 hidden sm:block">
+        <div className="py-4 w-full bg-darkprimary-100 hidden sm:block">
             <div className="flex">
                 {store.columns.map((item) => (
                     <TableHeadItem key={item.name} item={item} store={store} />

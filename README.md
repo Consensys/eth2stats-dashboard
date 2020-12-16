@@ -14,10 +14,9 @@ The dashboard can connect to multiple networks so you only need a single instanc
   npm install
   npm run install-dev
   ```
-  
-- create a `config.dev.jsonc`
-  `cp config/config.dev.sample.jsonc config/config.dev.jsonc`
-  
+
+- Set the `ETH2STATS_DEV_SERVER` variable to `true` to use the `local` connection instead of the `remote` one. 
+
 - in two terminals run  
   `npm run start`  
   `npm run watch`
